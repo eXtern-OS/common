@@ -56,6 +56,14 @@ func (d *DBClient) InsertData(data interface{}, db, collection string) error {
 	return err
 }
 
+// InsertMany inserts multiple values
+func (d *DBClient) InsertMany(data []interface{}, db, collection string) error {
+	d.Mutex.Lock()
+	_, err := d.Client.Database(db).Collection(collection).InsertMany(context.Background(), data)
+	d.Mutex.Unlock()
+	return err
+}
+
 // FindData finds data and decodes to the given pointer
 func (d *DBClient) FindData(filter bson.M, toDecode interface{}, db, collection string) error {
 	d.Mutex.Lock()
