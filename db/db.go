@@ -72,6 +72,14 @@ func (d *DBClient) DeleteItem(filter bson.M, db, collection string) error {
 	return err
 }
 
+// DeleteItems deletes many items
+func (d *DBClient) DeleteItems(filter bson.M, db, collection string) error {
+	d.Mutex.Lock()
+	_, err := d.Client.Database(db).Collection(collection).DeleteMany(context.Background(), filter)
+	d.Mutex.Unlock()
+	return err
+}
+
 // UpdateData just updates one item by given filter
 func (d *DBClient) UpdateData(filter bson.M, update interface{}, db, collection string) error {
 	d.Mutex.Lock()
