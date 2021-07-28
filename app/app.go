@@ -5,8 +5,8 @@
 package app
 
 import (
-	"../publisher"
-	"../stats"
+	"github.com/eXtern-OS/common/publisher"
+	"github.com/eXtern-OS/common/stats"
 )
 
 // App has to have Export() and IsPaid()

@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"../utils"
+	"github.com/eXtern-OS/common/utils"
 )
 
 /*

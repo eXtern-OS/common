@@ -4,7 +4,7 @@
 package token
 
 import (
-	"../utils"
+	"github.com/eXtern-OS/common/utils"
 	"time"
 )
 

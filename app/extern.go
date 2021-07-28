@@ -1,9 +1,9 @@
 package app
 
 import (
-	"../payment"
-	"../publisher"
-	"../stats"
+	"github.com/eXtern-OS/common/payment"
+	"github.com/eXtern-OS/common/publisher"
+	"github.com/eXtern-OS/common/stats"
 )
 
 // Extern is an app which was developed for extern OS

@@ -1,7 +1,7 @@
 package app
 
 import (
-	"../publisher"
+	"github.com/eXtern-OS/common/publisher"
 )
 
 /* Sample {
