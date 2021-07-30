@@ -95,3 +95,11 @@ func (d *DBClient) UpdateData(filter bson.M, update interface{}, db, collection 
 	d.Mutex.Unlock()
 	return err
 }
+
+// FindMany finds many entries
+func (d *DBClient) FindMany(filter bson.M, db, collection string) (*mongo.Cursor, error) {
+	d.Mutex.Lock()
+	cur, err := d.Client.Database(db).Collection(collection).Find(context.Background(), filter)
+	d.Mutex.Unlock()
+	return cur, err
+}
