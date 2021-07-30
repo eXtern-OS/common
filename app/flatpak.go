@@ -18,14 +18,14 @@ import (
 
 // Flatpak provides structure for raw response from API
 type Flatpak struct {
-	FlatpakAppId          string `json:"flatpak_app_id" bson:"flatpak_app_id"`
+	FlatpakAppId          string `json:"flatpakAppId" bson:"flatpakAppId"`
 	Name                  string `json:"name" bson:"name"`
 	Summary               string `json:"summary" bson:"summary"`
-	CurrentReleaseVersion string `json:"current_release_version" bson:"current_release_version"`
-	CurrentReleaseDate    string `json:"current_release_date" bson:"current_release_date"`
-	IconDesktopUrl        string `json:"icon_desktop_url" bson:"icon_desktop_url"`
-	IconMobileUrl         string `json:"icon_mobile_url" bson:"icon_mobile_url"`
-	InStoreSinceDate      string `json:"in_store_since_date" bson:"in_store_since_date"`
+	CurrentReleaseVersion string `json:"currentReleaseVersion" bson:"currentReleaseVersion"`
+	CurrentReleaseDate    string `json:"currentReleaseDate" bson:"currentReleaseDate"`
+	IconDesktopUrl        string `json:"iconDesktopUrl" bson:"iconDesktopUrl"`
+	IconMobileUrl         string `json:"iconMobileUrl" bson:"iconMobileUrl"`
+	InStoreSinceDate      string `json:"inStoreSinceDate" bson:"inStoreSinceDate"`
 }
 
 func (f *Flatpak) Export() ExportedApp {
