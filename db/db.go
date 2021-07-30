@@ -6,7 +6,6 @@ package db
 
 import (
 	"context"
-	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
@@ -65,7 +64,7 @@ func (d *DBClient) InsertMany(data []interface{}, db, collection string) error {
 }
 
 // FindData finds data and decodes to the given pointer
-func (d *DBClient) FindData(filter bson.M, toDecode interface{}, db, collection string) error {
+func (d *DBClient) FindData(filter interface{}, toDecode interface{}, db, collection string) error {
 	d.Mutex.Lock()
 	err := d.Client.Database(db).Collection(collection).FindOne(context.Background(), filter).Decode(toDecode)
 	d.Mutex.Unlock()
@@ -73,7 +72,7 @@ func (d *DBClient) FindData(filter bson.M, toDecode interface{}, db, collection 
 }
 
 // DeleteItem deletes one item
-func (d *DBClient) DeleteItem(filter bson.M, db, collection string) error {
+func (d *DBClient) DeleteItem(filter interface{}, db, collection string) error {
 	d.Mutex.Lock()
 	_, err := d.Client.Database(db).Collection(collection).DeleteOne(context.Background(), filter)
 	d.Mutex.Unlock()
@@ -81,7 +80,7 @@ func (d *DBClient) DeleteItem(filter bson.M, db, collection string) error {
 }
 
 // DeleteItems deletes many items
-func (d *DBClient) DeleteItems(filter bson.M, db, collection string) error {
+func (d *DBClient) DeleteItems(filter interface{}, db, collection string) error {
 	d.Mutex.Lock()
 	_, err := d.Client.Database(db).Collection(collection).DeleteMany(context.Background(), filter)
 	d.Mutex.Unlock()
@@ -89,7 +88,7 @@ func (d *DBClient) DeleteItems(filter bson.M, db, collection string) error {
 }
 
 // UpdateData just updates one item by given filter
-func (d *DBClient) UpdateData(filter bson.M, update interface{}, db, collection string) error {
+func (d *DBClient) UpdateData(filter interface{}, update interface{}, db, collection string) error {
 	d.Mutex.Lock()
 	_, err := d.Client.Database(db).Collection(collection).UpdateOne(context.Background(), filter, update)
 	d.Mutex.Unlock()
@@ -97,7 +96,7 @@ func (d *DBClient) UpdateData(filter bson.M, update interface{}, db, collection 
 }
 
 // FindMany finds many entries
-func (d *DBClient) FindMany(filter bson.M, db, collection string) (*mongo.Cursor, error) {
+func (d *DBClient) FindMany(filter interface{}, db, collection string) (*mongo.Cursor, error) {
 	d.Mutex.Lock()
 	cur, err := d.Client.Database(db).Collection(collection).Find(context.Background(), filter)
 	d.Mutex.Unlock()
