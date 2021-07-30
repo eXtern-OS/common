@@ -112,6 +112,10 @@ type Snap struct {
 	SnapID string `json:"snap-id"`
 }
 
+type SnapResults struct {
+	Results []Snap `json:"results"`
+}
+
 func (s *Snap) Export() ExportedApp {
 	return ExportedApp{
 		AppType:        SnapApp,
