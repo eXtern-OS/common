@@ -8,8 +8,8 @@ import (
 
 // Extern is an app which was developed for extern OS
 type Extern struct {
-	Name        string
-	Description string
+	Name        string `json:"name" bson:"name"`
+	Description string `json:"description" bson:"description"`
 
 	Icon        string   `json:"icon" bson:"icon"`
 	Header      string   `json:"header" bson:"header"`

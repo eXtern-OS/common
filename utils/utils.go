@@ -39,3 +39,21 @@ func Hash(income []byte) string {
 	hasher.Write(income)
 	return base64.URLEncoding.EncodeToString(hasher.Sum(nil))
 }
+
+// BtoI converts boolean to int: true -> 1, false -> 0
+func BtoI(income bool) int {
+	if income {
+		return 1
+	} else {
+		return 0
+	}
+}
+
+// SumBtoI finds sum of converted booleans
+func SumBtoI(income ...bool) int {
+	var res int
+	for _, x := range income {
+		res += BtoI(x)
+	}
+	return res
+}
