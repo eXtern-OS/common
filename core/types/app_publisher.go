@@ -1,4 +1,4 @@
-package publisher
+package types
 
 type Publisher struct {
 }

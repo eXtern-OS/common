@@ -1,9 +1,4 @@
-package app
-
-import (
-	"github.com/eXtern-OS/common/publisher"
-	"github.com/eXtern-OS/common/stats"
-)
+package types
 
 /*
 {
@@ -123,7 +118,7 @@ func (s *Snap) Export() ExportedApp {
 		Description:    s.App.Title,
 		Version:        s.Rev.Version,
 		StatsAvailable: false,
-		Stats:          stats.ExportedStats{},
+		Stats:          ExportedStats{},
 		IconURL:        s.Icon(),
 		HeaderURL:      "",
 		Screenshots:    s.Screenshots(),
@@ -137,8 +132,8 @@ func (s *Snap) IsPaid() bool {
 	return false
 }
 
-func (s *Snap) ExportPublisher() publisher.ExportedPublisher {
-	return publisher.ExportedPublisher{}
+func (s *Snap) ExportPublisher() ExportedPublisher {
+	return ExportedPublisher{}
 }
 
 func (s *Snap) Screenshots() []string {

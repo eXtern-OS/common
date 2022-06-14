@@ -1,8 +1,4 @@
-package app
-
-import (
-	"github.com/eXtern-OS/common/publisher"
-)
+package types
 
 /* Sample {
 	"flatpakAppId":"com.play0ad.zeroad",
@@ -36,7 +32,7 @@ func (f *Flatpak) Export() ExportedApp {
 		Version:        f.CurrentReleaseVersion,
 		StatsAvailable: false,
 		IconURL:        f.IconDesktopUrl,
-		Publisher:      publisher.NewPublisher(f.Name),
+		Publisher:      NewPublisher(f.Name),
 		PackageName:    f.FlatpakAppId,
 	}
 }

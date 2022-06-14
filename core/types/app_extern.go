@@ -1,10 +1,4 @@
-package app
-
-import (
-	"github.com/eXtern-OS/common/payment"
-	"github.com/eXtern-OS/common/publisher"
-	"github.com/eXtern-OS/common/stats"
-)
+package types
 
 // Extern is an app which was developed for extern OS
 type Extern struct {
@@ -15,16 +9,16 @@ type Extern struct {
 	Header      string   `json:"header" bson:"header"`
 	Screenshots []string `json:"screenshots" bson:"screenshots"`
 
-	Publisher publisher.Publisher `json:"publisher" bson:"publisher"`
+	Publisher Publisher `json:"publisher" bson:"publisher"`
 
-	Latest   Package   `json:"latest" bson:"latest"`
-	Packages []Package `json:"packages" bson:"packages"`
+	Latest   Package `json:"latest" bson:"latest"`
+	Packages Package `json:"packages" bson:"packages"`
 
-	Payment payment.Payment `json:"payment" bson:"payment"`
+	Payment Payment `json:"payment" bson:"payment"`
 
 	StatsAvailable bool `json:"stats_available" bson:"stats_available"`
 
-	Stats stats.Stats `json:"stats" bson:"stats"`
+	Stats Stats `json:"stats" bson:"stats"`
 }
 
 func (e *Extern) Export() ExportedApp {
@@ -44,5 +38,5 @@ func (e *Extern) Export() ExportedApp {
 }
 
 func (e *Extern) IsPaid() bool {
-	return e.Payment != payment.Free
+	return e.Payment != Free
 }

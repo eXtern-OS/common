@@ -1,7 +1,7 @@
 /*
 	The purpose of this package is to define token type and provide utilities to create it
 */
-package token
+package types
 
 import (
 	"github.com/eXtern-OS/common/utils"
@@ -20,9 +20,7 @@ type Token struct {
 	UserID  string `json:"user_id"  bson:"user_id"`
 }
 
-/*
-	ExportedToken will be used to communicate between servers
-*/
+//	ExportedToken will be used to communicate between servers
 type ExportedToken struct {
 	TokenID string `json:"token_id"`
 	UserID  string `json:"user_id"`
